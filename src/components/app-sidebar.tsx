@@ -48,7 +48,7 @@ export function AppSidebar() {
                 </SidebarGroup>
                 <footer className="p-4 text-center">
                     <DarkModeSwitch />
-                    <p className="text-sm text-gray-500 mt-2">© 2023 Your Company</p>
+                    <p className="text-sm text-gray-500 mt-2">© 2025 Jonas Hermsen</p>
                 </footer>
             </SidebarContent>
         </Sidebar>

@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useState } from "react"
+import React from "react"
 import { AppSidebar } from "@/components/app-sidebar"
 import { ExampleChart } from "@/components/ExampleChart"
 import { ExampleLineChart } from "@/components/ExampleLineChart"
@@ -15,7 +15,7 @@ import {
     closestCenter,
     PointerSensor,
     useSensor,
-    useSensors,
+    useSensors, DragEndEvent,
 } from "@dnd-kit/core"
 import {
     arrayMove,
@@ -43,15 +43,16 @@ export default function Page() {
         })
     )
 
-    function handleDragEnd(event: any) {
-        const { active, over } = event
-        if (!editActive) return // no dragging if not editing
-        if (active.id !== over?.id) {
-            setItems((items) => {
-                const oldIndex = items.indexOf(active.id)
-                const newIndex = items.indexOf(over.id)
-                return arrayMove(items, oldIndex, newIndex)
-            })
+    function handleDragEnd(event: DragEndEvent) {
+        const { active, over } = event;
+
+        if (!editActive || !over) return; // über null abfangen
+
+        const oldIndex = items.indexOf(active.id as string);
+        const newIndex = items.indexOf(over.id as string);
+
+        if (oldIndex !== newIndex) {
+            setItems((items) => arrayMove(items, oldIndex, newIndex));
         }
     }
 
