@@ -143,6 +143,12 @@
   body {
     @apply bg-background text-foreground;
   }
+  ul,
+  li {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
 }
 
 @keyframes gradient-pulse {
