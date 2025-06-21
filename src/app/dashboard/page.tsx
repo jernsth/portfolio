@@ -1,12 +1,10 @@
 "use client"
 
 import React from "react"
-import { AppSidebar } from "@/components/app-sidebar"
-import { ExampleChart } from "@/components/ExampleChart"
-import { ExampleLineChart } from "@/components/ExampleLineChart"
-import { ExampleRadarChart } from "@/components/ExampleRadarChart"
-import { ExampleAreaChart } from "@/components/ExampleAreaChart"
-import { SidebarProvider } from "@/components/ui/sidebar"
+import { ExampleChart } from "@/components/shared/ExampleChart"
+import { ExampleLineChart } from "@/components/shared/ExampleLineChart"
+import { ExampleRadarChart } from "@/components/shared/ExampleRadarChart"
+import { ExampleAreaChart } from "@/components/shared/ExampleAreaChart"
 import { SiteHeader } from "@/components/SiteHeader"
 import { ChartCard } from "@/components/ChartCard"
 
@@ -57,16 +55,6 @@ export default function Page() {
     }
 
     return (
-        <SidebarProvider
-            style={
-                {
-                    "--sidebar-width": "calc(var(--spacing) * 72)",
-                    "--header-height": "calc(var(--spacing) * 12)",
-                } as React.CSSProperties
-            }
-        >
-            <AppSidebar />
-
             <div className="flex flex-1 flex-col">
                 <SiteHeader
                     title="Dashboard"
@@ -115,6 +103,5 @@ export default function Page() {
                     </SortableContext>
                 </DndContext>
             </div>
-        </SidebarProvider>
     )
 }

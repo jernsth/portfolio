@@ -9,17 +9,30 @@ import {
     SidebarMenuItem,
 } from "@/components/ui/sidebar"
 
-import { Home, LayoutDashboard } from "lucide-react"
+import { Home, LayoutDashboard, BookCheck, HandMetal} from "lucide-react"
 import {DarkModeSwitch} from "@/components/DarkModeSwitch";
 
-const items = [
+const itemsMain = [
     {
         title: "Home",
         url: "/",
         icon: Home,
     },
     {
-        title: "Dashboard",
+        title: "Projects",
+        url: "/projects",
+        icon: BookCheck,
+    },
+    {
+        title: "About Me",
+        url: "/about",
+        icon: HandMetal,
+    },
+]
+
+const itemsTesting = [
+    {
+        title: "Sample Dashboard",
         url: "/dashboard",
         icon: LayoutDashboard,
     },
@@ -30,10 +43,10 @@ export function AppSidebar() {
         <Sidebar>
             <SidebarContent>
                 <SidebarGroup>
-                    <SidebarGroupLabel>Application</SidebarGroupLabel>
+                    <SidebarGroupLabel>Main Site</SidebarGroupLabel>
                     <SidebarGroupContent>
                         <SidebarMenu>
-                            {items.map((item) => (
+                            {itemsMain.map((item) => (
                                 <SidebarMenuItem key={item.title}>
                                     <SidebarMenuButton asChild>
                                         <a href={item.url}>
@@ -45,6 +58,19 @@ export function AppSidebar() {
                             ))}
                         </SidebarMenu>
                     </SidebarGroupContent>
+                </SidebarGroup>
+                <SidebarGroup>
+                    <SidebarGroupLabel>Try it out</SidebarGroupLabel>
+                    {itemsTesting.map((item) => (
+                        <SidebarMenuItem key={item.title}>
+                            <SidebarMenuButton asChild>
+                                <a href={item.url}>
+                                    <item.icon />
+                                    <span>{item.title}</span>
+                                </a>
+                            </SidebarMenuButton>
+                        </SidebarMenuItem>
+                    ))}
                 </SidebarGroup>
                 <footer className="p-4 text-center">
                     <DarkModeSwitch />

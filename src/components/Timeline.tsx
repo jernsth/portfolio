@@ -17,9 +17,9 @@ interface TimelineProps {
 
 export function Timeline({ items, title = "Timeline" }: TimelineProps) {
     return (
-        <section className="max-w-3xl mx-auto mt-16 px-4">
+        <section className="max-w-3xl mx-auto mt-16 px-4 text-center">
             <h2 className="text-2xl font-semibold text-primary mb-8">{title}</h2>
-            <div className="relative border-l-2 border-border pl-6 space-y-10">
+            <div className="relative border-l-2 border-border pl-6 space-y-10 text-left">
                 {items.map((item, idx) => {
                     const Icon = item.type === "work" ? Briefcase : GraduationCap;
 
