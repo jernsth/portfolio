@@ -19,7 +19,7 @@ export default function Page() {
                             One of my greatest passions is football. I’ve been playing the game since I could walk — and I still do, with varying degrees of success, for a local club.
                             <br />
                             I&#39;m also a proud supporter of
-                            <span className="font-extrabold bg-gradient-to-r from-blue-700 via-sky-500 to-blue-400 bg-clip-text text-transparent ml-1">
+                            <span className="font-extrabold bg-gradient-to-r from-blue-700 via-sky-500 to-blue-400 bg-clip-text text-transparent ml-1 animate-gradient">
                                 FC Schalke 04
                             </span>, the legendary club from Gelsenkirchen, Germany.
                         </p>
