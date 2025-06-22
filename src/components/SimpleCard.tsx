@@ -12,7 +12,7 @@ import React from "react"
 type Props = {
     title: string,
     content: React.ReactNode,
-    link?: string,
+    link: string,
 }
 
 export function SimpleCard({title, content, link}: Props) {
