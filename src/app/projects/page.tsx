@@ -1,4 +1,7 @@
 import {SiteHeader} from "@/components/SiteHeader";
+import { SimpleCard } from "@/components/SimpleCard";
+
+import Image from "next/image";
 
 export default function Page() {
     return (
@@ -15,8 +18,24 @@ export default function Page() {
                         <strong>Feel free to explore!</strong>
                     </p>
                 </div>
-                <div className="mt-12 max-w-3xl mx-auto text-center border-t pt-12">
-                    Nothing to see here yet, but stay tuned for updates!
+                <div className="mt-12 border-t border-primary/10 pt-12 px-4">
+                    <div className="max-w-xl mx-auto flex flex-col items-center gap-6">
+                        <SimpleCard
+                            title="Landing Page for Small Businesses"
+                            content={
+                                <div className="rounded-lg overflow-hidden shadow border border-primary/10 bg-white">
+                                    <Image
+                                        src="/images/kmu-example.png"
+                                        alt="Landing Page for small businesses"
+                                        width={400}
+                                        height={300}
+                                        className="w-full h-auto object-cover"
+                                    />
+                                </div>
+                            }
+                            link="/projects/kmu-template"
+                        />
+                    </div>
                 </div>
             </section>
         </div>
