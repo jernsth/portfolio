@@ -1,14 +1,14 @@
 import {SiteHeader} from "@/components/SiteHeader";
-import ProfileIntro from "@/components/ProfileIntro";
-import Experience from "@/components/Experience";
-import Education from "@/components/Education";
-import Skills from "@/components/Skills";
+import {IntroMotion} from "@/components/home/IntroMotion";
+import Experience from "@/components/home/Experience";
+import Education from "@/components/home/Education";
+import Skills from "@/components/home/Skills";
 
 function Page() {
     return (
             <div className="flex flex-1 flex-col">
                 <SiteHeader title="Home" editable={false} editActive={false} setEditActive={() => {}} />
-                <ProfileIntro />
+                <IntroMotion />
                 <div>
                     <Experience />
                     <Education />

@@ -1,4 +1,4 @@
-import {Timeline, TimelineItem} from "@/components/Timeline";
+import {Timeline, TimelineItem} from "@/components/shared/Timeline";
 
 const educationItems: TimelineItem[] = [
     {

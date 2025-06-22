@@ -1,5 +1,5 @@
 // components/ExperienceEducation.tsx
-import { Timeline, TimelineItem } from "@/components/Timeline";
+import { Timeline, TimelineItem } from "@/components/shared/Timeline";
 
 const experienceItems: TimelineItem[] = [
     {
