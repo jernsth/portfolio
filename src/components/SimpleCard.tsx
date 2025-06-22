@@ -7,11 +7,11 @@ import {
 
 import Link from "next/link"
 
-import JSX from "react"
+import React from "react"
 
 type Props = {
     title: string,
-    content: JSX.Element
+    content: React.ReactNode,
     link?: string,
 }
 
