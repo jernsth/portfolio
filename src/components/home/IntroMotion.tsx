@@ -18,7 +18,7 @@ export function IntroMotion() {
                     initial={{opacity: 0, x: isMobile ? 0 : 20, y: -50}}
                     animate={{opacity: 1, x: isMobile ? 0 : 20, y: 0}}
                     transition={{duration: 0.6, ease: "easeOut"}}
-                    className="max-w-xl"
+                    className="max-w-sm md:max-w-xl"
                 >
                     <ProfileIntro />
                 </motion.div>

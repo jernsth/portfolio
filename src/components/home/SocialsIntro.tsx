@@ -24,8 +24,8 @@ export function SocialsIntro() {
             <motion.div
                 initial={{opacity: 0, x: 200}}
                 animate={{opacity: 1, x: 0}}
-                transition={{duration: 1, ease: "easeOut", delay: 0.8, type: "spring"}}
-                className="max-w-xl"
+                transition={{duration: 0.8, ease: "easeOut", delay: 0.6, type: "spring"}}
+                className="max-w-sm md:max-w-xl"
             >
                 <a target="_blank" rel="noopener noreferrer" href="https://www.github.com/jernsth">
                     <SiGithub size={24}
@@ -37,7 +37,7 @@ export function SocialsIntro() {
                 initial={{opacity: 0, x: 200}}
                 animate={{opacity: 1, x: 0}}
                 transition={{duration: 1, ease: "easeOut", delay: 1, type: "spring"}}
-                className="max-w-xl"
+                className="max-w-sm md:max-w-xl"
             >
                 <a target="_blank" rel="noopener noreferrer"
                    href="https://www.linkedin.com/in/jonas-hermsen-61b53a142/">
@@ -50,7 +50,7 @@ export function SocialsIntro() {
                 initial={{opacity: 0, x: 200}}
                 animate={{opacity: 1, x: 0}}
                 transition={{duration: 1, ease: "easeOut", delay: 1.2, type: "spring"}}
-                className="max-w-xl"
+                className="max-w-sm md:max-w-xl"
             >
                 <a href="mailto:jonashermsen@gmx.de">
                     <MdMail size={24}

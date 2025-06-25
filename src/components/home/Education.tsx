@@ -1,4 +1,7 @@
+"use client";
+
 import {Timeline, TimelineItem} from "@/components/shared/Timeline";
+import {motion} from "framer-motion";
 
 const educationItems: TimelineItem[] = [
     {
@@ -19,6 +22,13 @@ const educationItems: TimelineItem[] = [
 
 export default function Education() {
     return (
-        <Timeline items={educationItems} title="Education" />
+        <motion.div
+            initial={{opacity: 0, x:200, y: 0}}
+            animate={{opacity: 1, x:0, y: 0}}
+            transition={{duration: 0.8, ease: "easeOut", delay:1.4}}
+            className="w-full mx-auto max-w-sm md:max-w-xl"
+        >
+            <Timeline items={educationItems} title="Education" />
+        </motion.div>
     );
 }
