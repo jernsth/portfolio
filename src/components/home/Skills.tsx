@@ -1,101 +1,145 @@
 "use client";
 
 import * as React from "react";
-import Image from "next/image";
+
 
 import { Card } from "@/components/ui/card";
 
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Autoplay } from "swiper/modules";
+import {
+    SiReact,
+    SiNextdotjs,
+    SiTypescript,
+    SiJavascript,
+    SiHtml5,
+    SiCss3,
+    SiTailwindcss,
+    SiNodedotjs,
+    SiExpress,
+    SiMongodb,
+    SiMysql,
+    SiPython,
+    SiC,
+    SiDocker,
+    SiGit,
+    SiPrometheus,
+} from "react-icons/si";
+
+import { FaJava } from "react-icons/fa";
+
 
 import 'swiper/css';
 import "swiper/css/autoplay";
 import { motion } from "framer-motion";
 
 const skills = [
+    // --- Frontend ---
     {
         title: "React",
-        logo: "https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg",
+        logo: <SiReact size={24} />,
     },
     {
         title: "Next.js",
-        logo: "https://upload.wikimedia.org/wikipedia/commons/8/8e/Nextjs-logo.svg",
+        logo: <SiNextdotjs size={24} />,
     },
     {
         title: "TypeScript",
-        logo: "https://upload.wikimedia.org/wikipedia/commons/4/4c/Typescript_logo_2020.svg",
+        logo: <SiTypescript size={24} />,
     },
+    {
+        title: "JavaScript",
+        logo: <SiJavascript size={24} />,
+    },
+    {
+        title: "HTML",
+        logo: <SiHtml5 size={24} />,
+    },
+    {
+        title: "CSS",
+        logo: <SiCss3 size={24} />,
+    },
+    {
+        title: "Tailwind CSS",
+        logo: <SiTailwindcss size={24} />,
+    },
+
+    // --- Backend ---
     {
         title: "Node.js",
-        logo: "https://upload.wikimedia.org/wikipedia/commons/d/d9/Node.js_logo.svg",
+        logo: <SiNodedotjs size={24} />,
     },
     {
-        title: "Docker",
-        logo: "/images/moby-logo.png",
+        title: "Express",
+        logo: <SiExpress size={24} />,
     },
     {
-        title: "Git",
-        logo: "https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg",
+        title: "MongoDB",
+        logo: <SiMongodb size={24} />,
     },
     {
-        title: "Prometheus",
+        title: "SQL",
+        logo: <SiMysql size={24} />,
     },
     {
         title: "Python",
-        logo: "https://upload.wikimedia.org/wikipedia/commons/c/c3/Python-logo-notext.svg",
-    }
+        logo: <SiPython size={24} />,
+    },
+    {
+        title: "Java",
+        logo: <FaJava size={24} />,
+    },
+    {
+        title: "C/C++",
+        logo: <SiC size={24} />,
+    },
+    {
+        title: "REST",
+        logo: <span className="text-xs font-semibold px-2 py-1 rounded bg-gray-200 text-gray-700">API</span>,
+    },
+
+    // --- DevOps ---
+    {
+        title: "Docker",
+        logo: <SiDocker size={24} />,
+    },
+    {
+        title: "Git",
+        logo: <SiGit size={24} />,
+    },
+    {
+        title: "Prometheus",
+        logo: <SiPrometheus size={24} />,
+    },
 ];
+
 
 export default function Skills() {
     return (
         <motion.div
             initial={{opacity: 0, x:0, y: 100}}
             animate={{opacity: 1, x:0, y: 0}}
-            transition={{duration: 0.8, ease: "easeOut", delay:2.2}}
-            className="w-full mx-auto"
+            transition={{duration: 0.8, ease: "easeOut", delay:1.9}}
+            className="mx-auto flex max-w-sm md:max-w-2xl"
         >
-        <section className="max-w-3xl mx-auto mt-16 px-4 text-center">
-            <h2 className="text-2xl font-semibold text-primary">Skills</h2>
-            <Swiper
-                modules={[Autoplay]}
-                loop={true}
-                autoplay={{
-                    delay: 3000,
-                    disableOnInteraction: false,
-                    pauseOnMouseEnter: true,
-                }}
-                spaceBetween={20}
-                slidesPerView={3}
-                breakpoints={{
-                    0: {slidesPerView: 1},
-                    640: {slidesPerView: 1},
-                    768: {slidesPerView: 2},
-                    1024: {slidesPerView: 3},
-                }}
-            >
+        <div className="max-w-sm md:max-w-2xl mx-auto mt-16 text-center">
+            <h2 className="text-2xl font-semibold text-primary mb-6">Skills</h2>
+            <div className="flex flex-wrap justify-center gap-2">
                 {skills.map((skill, index) => (
-                    <SwiperSlide key={index}>
-                        <Card
-                            className="mt-4 justify-center items-center max-w-sm mx-auto shadow-lg rounded-2xl border border-primary/10 aspect-[5/5] flex flex-col">
-                            {skill.logo ? (
-                                <Image className="min-w-16 min-h-16"
-                                       src={skill.logo}
-                                       alt={skill.title}
-                                       width={64}
-                                       height={64}
-                                />
-                            ) : (
-                                <div
-                                    className="w-16 h-16 rounded-full bg-primary-10 flex items-center justify-center text-primary/65 font-bold text-xl border-2 border-primary shadow-sm">
-                                    {skill.title.charAt(0).toUpperCase()}
-                                </div>
-                            )}
-                            <span className="text-base font-medium">{skill.title}</span>
+                    <motion.div
+                        initial={{opacity: 0, x:0, y: 100}}
+                        animate={{opacity: 1, x:0, y: 0}}
+                        transition={{duration: 0.8, ease: "easeOut", delay: 2 + index * 0.05}}
+                        key={skill.title}
+                    >
+                        <Card key={skill.title} className="flex-row items-center justify-center p-4 gap-2 shadow-lg rounded-2xl transition-transform duration-200 ease-in-out hover:scale-[1.05] hover:shadow-lg">
+                            { skill.logo }
+                            <p>
+                                {skill.title}
+                            </p>
                         </Card>
-                    </SwiperSlide>
+                    </motion.div>
                 ))}
-            </Swiper>
-        </section>
+            </div>
+        </div>
         </motion.div>
     );
 }
