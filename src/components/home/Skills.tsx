@@ -30,7 +30,7 @@ import { FaJava } from "react-icons/fa";
 import 'swiper/css';
 import "swiper/css/autoplay";
 import { motion } from "framer-motion";
-import { SiSpring } from "@icons-pack/react-simple-icons";
+import { SiSpring, SiSpringboot } from "@icons-pack/react-simple-icons";
 
 const skills = [
     // --- Frontend ---
@@ -66,8 +66,10 @@ const skills = [
     // --- Backend ---
     {
         title: "Java Spring",
-        logo: <SiSpring size={24} />,
+        logo: <SiSpring size={24} />
     },
+
+    // --- Backend ---
     {
         title: "Node.js",
         logo: <SiNodedotjs size={24} />,

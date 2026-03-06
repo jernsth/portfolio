@@ -6,8 +6,22 @@ import {motion} from "framer-motion";
 
 const experienceItems: TimelineItem[] = [
     {
+        title: "Backend Developer – m3connect GmbH",
+        subtitle: "December 2025 – present",
+        description: "Building scalable web applications using React, Next.js and Node.js. Currently the lead developer of a WebUI project for a 5G-Core.",
+        date: "2024",
+        type: "work",
+    },
+    {
         title: "Fullstack Developer – m3connect GmbH",
-        subtitle: "June 2020 – Present",
+        subtitle: "December 2024 – December 2025",
+        description: "Building scalable web applications using React, Next.js and Node.js. Currently the lead developer of a WebUI project for a 5G-Core.",
+        date: "2024",
+        type: "work",
+    },
+    {
+        title: "Network Specialist",
+        subtitle: "June 2020 – December 2024",
         description: "Building scalable web applications using React, Next.js and Node.js. Currently the lead developer of a WebUI project for a 5G-Core.",
         date: "2020",
         type: "work",
