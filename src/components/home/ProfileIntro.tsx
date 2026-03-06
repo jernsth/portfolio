@@ -22,7 +22,7 @@ export function ProfileIntro() {
                         <h1 className="text-3xl font-bold text-primary">Hi, I am Jonas</h1>
                         <p className="p-0 m-0 flex justify-center text-2xl wave-hover origin-bottom-right">👋</p>
                     </div>
-                    <p className="text-muted-foreground mt-1">Fullstack Developer & Cybersecurity Enthusiast</p>
+                    <p className="text-muted-foreground mt-1">Backend Developer & Cybersecurity Enthusiast</p>
                     <div className="flex items-center gap-2 text-primary mt-2">
                         <a target="_blank" rel="noopener noreferrer"
                            href="https://www.google.com/maps/@50.7761163,6.0836072,14.5z">
