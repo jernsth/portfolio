@@ -68,6 +68,8 @@ const skills = [
         title: "Java Spring",
         logo: <SiSpring size={24} />
     },
+
+    // --- Backend ---
     {
         title: "Node.js",
         logo: <SiNodedotjs size={24} />,

@@ -36,7 +36,7 @@ export function SocialsIntro() {
             <motion.div
                 initial={{opacity: 0, x: 200}}
                 animate={{opacity: 1, x: 0}}
-                transition={{duration: 1, ease: "easeOut", delay: 1, type: "spring"}}
+                transition={{duration: 0.8, ease: "easeOut", delay: 0.8, type: "spring"}}
                 className="max-w-sm md:max-w-xl"
             >
                 <a target="_blank" rel="noopener noreferrer"
@@ -49,7 +49,7 @@ export function SocialsIntro() {
             <motion.div
                 initial={{opacity: 0, x: 200}}
                 animate={{opacity: 1, x: 0}}
-                transition={{duration: 1, ease: "easeOut", delay: 1.2, type: "spring"}}
+                transition={{duration: 0.8, ease: "easeOut", delay: 1.0, type: "spring"}}
                 className="max-w-sm md:max-w-xl"
             >
                 <a href="mailto:jonashermsen@gmx.de">
