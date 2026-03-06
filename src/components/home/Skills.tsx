@@ -22,6 +22,7 @@ import {
     SiDocker,
     SiGit,
     SiPrometheus,
+    SiSpring
 } from "react-icons/si";
 
 import { FaJava } from "react-icons/fa";
@@ -68,8 +69,6 @@ const skills = [
         title: "Java Spring",
         logo: <SiSpring size={24} />
     },
-
-    // --- Backend ---
     {
         title: "Node.js",
         logo: <SiNodedotjs size={24} />,
