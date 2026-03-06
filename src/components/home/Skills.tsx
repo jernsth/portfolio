@@ -21,8 +21,7 @@ import {
     SiC,
     SiDocker,
     SiGit,
-    SiPrometheus,
-    SiSpring
+    SiPrometheus
 } from "react-icons/si";
 
 import { FaJava } from "react-icons/fa";
@@ -31,7 +30,7 @@ import { FaJava } from "react-icons/fa";
 import 'swiper/css';
 import "swiper/css/autoplay";
 import { motion } from "framer-motion";
-import { SiSpring, SiSpringboot } from "@icons-pack/react-simple-icons";
+import { SiSpring } from "@icons-pack/react-simple-icons";
 
 const skills = [
     // --- Frontend ---
