@@ -4,6 +4,7 @@ import "./globals.css";
 import { ThemeProvider } from "@/components/ThemeProvider"
 import {SidebarProvider} from "@/components/ui/sidebar";
 import {AppSidebar} from "@/components/app-sidebar";
+import { TechyBackground } from "@/components/shared/TechyBackground";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -36,19 +37,22 @@ export default function RootLayout({
             enableSystem
             disableTransitionOnChange
         >
-            <SidebarProvider
-                style={
-                    {
-                        "--sidebar-width": "calc(var(--spacing) * 72)",
-                        "--header-height": "calc(var(--spacing) * 12)",
-                    } as React.CSSProperties
-                }
-            >
-                <div className="flex min-h-screen w-full">
-                    <AppSidebar />
-                    <main className="flex-1">{children}</main>
-                </div>
-            </SidebarProvider>
+            <TechyBackground />
+            <div style={{ position: 'relative', zIndex: 1 }}>
+                <SidebarProvider
+                    style={
+                        {
+                            "--sidebar-width": "calc(var(--spacing) * 72)",
+                            "--header-height": "calc(var(--spacing) * 12)",
+                        } as React.CSSProperties
+                    }
+                >
+                    <div className="flex min-h-screen w-full">
+                        <AppSidebar />
+                        <main className="flex-1">{children}</main>
+                    </div>
+                </SidebarProvider>
+            </div>
         </ThemeProvider>
         </body>
         </html>
