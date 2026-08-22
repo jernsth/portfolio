@@ -1,30 +1,82 @@
+import type { Metadata } from "next";
+import Image from "next/image";
+import Link from "next/link";
+import { ArrowLeft, ExternalLink } from "lucide-react";
 import { SiteHeader } from "@/components/SiteHeader";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+
+export const metadata: Metadata = {
+    title: "Landing Page for Small Businesses",
+    description:
+        "A customizable Next.js and Tailwind CSS landing page template for small businesses.",
+};
+
+const stack = ["Next.js", "React", "TypeScript", "Tailwind CSS", "Vercel"];
 
 export default function Page() {
     return (
-        <div className="flex flex-col min-h-screen">
-            <SiteHeader
-                title="Example Landing Page for Small Businesses"
-                editable={false}
-                editActive={false}
-                setEditActive={() => {}}
-            />
+        <div className="flex min-h-screen flex-col">
+            <SiteHeader title="Landing Page for Small Businesses" />
 
-            <main className="flex flex-col items-center justify-center px-6 py-12 text-primary text-center">
-                <div className="max-w-2xl">
-                    <h1 className="text-3xl font-bold mb-4">Your Digital Start – Simplified</h1>
-                    <p className="text-lg leading-relaxed mb-6 text-primary/80">
-                        I’ve implemented a customizable landing page for small businesses, built with Next.js and Tailwind CSS.
-                        The template adapts easily to your business needs and includes key sections like services, testimonials, and a contact form — everything you need to get started online.
-                    </p>
-                    <a
-                        href="https://kmu-template.vercel.app/"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-block text-primary px-5 py-2 rounded-lg shadow hover:bg-primary/10 transition"
+            <main className="px-4 py-16 md:py-24">
+                <div className="mx-auto max-w-3xl">
+                    <Link
+                        href="/projects"
+                        className="inline-flex items-center gap-1.5 text-sm text-muted-foreground transition-colors hover:text-brand"
                     >
-                        View Live Demo
-                    </a>
+                        <ArrowLeft className="size-4" />
+                        Back to projects
+                    </Link>
+
+                    <p className="mt-8 mb-2 text-xs font-semibold uppercase tracking-[0.14em] text-brand">
+                        Project
+                    </p>
+                    <h1 className="text-3xl font-bold sm:text-4xl">
+                        Your Digital Start &mdash; Simplified
+                    </h1>
+
+                    <div className="mt-4 flex flex-wrap gap-1.5">
+                        {stack.map((tech) => (
+                            <Badge
+                                key={tech}
+                                variant="secondary"
+                                className="font-normal text-muted-foreground"
+                            >
+                                {tech}
+                            </Badge>
+                        ))}
+                    </div>
+
+                    <p className="mt-6 text-base leading-relaxed text-muted-foreground">
+                        I built a customizable landing page for small businesses with Next.js and
+                        Tailwind CSS. The template adapts easily to different businesses and ships
+                        with the sections that actually matter — services, testimonials and a
+                        contact form — so a company can get online without a full custom build.
+                    </p>
+
+                    <div className="mt-8">
+                        <Button asChild className="bg-brand text-brand-foreground hover:bg-brand/90">
+                            <a
+                                href="https://kmu-template.vercel.app/"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                View live demo
+                                <ExternalLink />
+                            </a>
+                        </Button>
+                    </div>
+
+                    <div className="mt-12 overflow-hidden rounded-xl border border-border shadow-sm">
+                        <Image
+                            src="/images/kmu-example.png"
+                            alt="Screenshot of the small business landing page template"
+                            width={1200}
+                            height={750}
+                            className="h-auto w-full object-cover"
+                        />
+                    </div>
                 </div>
             </main>
         </div>

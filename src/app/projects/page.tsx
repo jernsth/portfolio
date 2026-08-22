@@ -1,43 +1,50 @@
-import {SiteHeader} from "@/components/SiteHeader";
-import { SimpleCard } from "@/components/SimpleCard";
+import type { Metadata } from "next";
+import { SiteHeader } from "@/components/SiteHeader";
+import { ProjectCard, type ProjectCardProps } from "@/components/shared/ProjectCard";
 
-import Image from "next/image";
+export const metadata: Metadata = {
+    title: "Projects",
+    description:
+        "Selected projects by Jonas Hermsen — web applications and templates built with Next.js, Tailwind CSS and friends.",
+};
+
+const projects: ProjectCardProps[] = [
+    {
+        title: "Landing Page for Small Businesses",
+        description:
+            "A customizable landing page template for small businesses, with sections for services, testimonials and contact — ready to adapt and ship.",
+        image: "/images/kmu-example.png",
+        href: "/projects/kmu-template",
+        tags: ["Next.js", "Tailwind CSS", "TypeScript"],
+    },
+];
 
 export default function Page() {
     return (
         <div className="flex flex-1 flex-col">
-            <SiteHeader title="About Me" editable={false} editActive={false} setEditActive={() => {}} />
-            <section className="px-4 py-12">
-                <div className="max-w-3xl mx-auto text-center">
-                    <h1 className="text-4xl font-extrabold text-primary mb-4">Projects</h1>
-                    <p className="text-muted-foreground text-lg leading-relaxed">
-                        This is a collection of my projects, I have been developing myself or playing a role in the development process. For some live demos, check out the Try it out section.
-                        <br className="hidden md:inline" />
+            <SiteHeader title="Projects" />
+
+            <main className="px-4 py-16 md:py-24">
+                <header className="mx-auto max-w-3xl text-center">
+                    <p className="mb-2 text-xs font-semibold uppercase tracking-[0.14em] text-brand">
+                        Work
                     </p>
-                    <p className="text-muted-foreground text-lg leading-relaxed mt-2">
-                        <strong>Feel free to explore!</strong>
+                    <h1 className="text-3xl font-bold sm:text-4xl">Projects</h1>
+                    <p className="mt-4 text-base leading-relaxed text-muted-foreground">
+                        Things I have built or helped build. Some of them are live — check the
+                        <span className="text-foreground"> Try it out </span>
+                        section in the sidebar for interactive demos.
                     </p>
-                </div>
-                <div className="mt-12 border-t border-primary/10 pt-12 px-4">
-                    <div className="max-w-xl mx-auto flex flex-col items-center gap-6">
-                        <SimpleCard
-                            title="Landing Page for Small Businesses"
-                            content={
-                                <div className="rounded-lg overflow-hidden shadow border border-primary/10 bg-white">
-                                    <Image
-                                        src="/images/kmu-example.png"
-                                        alt="Landing Page for small businesses"
-                                        width={400}
-                                        height={300}
-                                        className="w-full h-auto object-cover"
-                                    />
-                                </div>
-                            }
-                            link="/projects/kmu-template"
-                        />
+                </header>
+
+                <div className="mx-auto mt-14 max-w-5xl">
+                    <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+                        {projects.map((project) => (
+                            <ProjectCard key={project.href} {...project} />
+                        ))}
                     </div>
                 </div>
-            </section>
+            </main>
         </div>
     );
 }

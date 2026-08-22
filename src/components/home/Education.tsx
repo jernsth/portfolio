@@ -1,34 +1,33 @@
 "use client";
 
-import {Timeline, TimelineItem} from "@/components/shared/Timeline";
-import {motion} from "framer-motion";
+import { Timeline, TimelineItem } from "@/components/shared/Timeline";
 
 const educationItems: TimelineItem[] = [
     {
-        title: "Computer Science b.Sc. - RWTH Aachen University",
-        subtitle: "Aachen, Januar 2026 (expected)",
-        description: "Focus: Software Engineering, System Design & Network Technologies",
-        date: "2026",
+        title: "B.Sc. Computer Science",
+        org: "RWTH Aachen University",
+        period: "Expected Oct 2026",
+        location: "Aachen, Germany",
+        description:
+            "Studying computer science alongside working full time, with a focus on how systems are designed rather than only how they are coded.",
+        highlights: [
+            "Focus areas: Software Engineering, System Design and Network Technologies.",
+        ],
         type: "education",
+        current: true,
     },
     {
-        title: "Abitur - Konrad-Duden Gymnasium",
-        subtitle: "Wesel, Mai 2018",
-        description: "Focus: Mathematics, Computer Science, English",
-        date: "2018",
+        title: "Abitur",
+        org: "Konrad-Duden-Gymnasium",
+        period: "May 2018",
+        location: "Wesel, Germany",
+        description:
+            "Secondary school diploma with advanced courses in the subjects that pointed me towards software.",
+        highlights: ["Advanced courses: Mathematics, Computer Science and English."],
         type: "education",
     },
 ];
 
 export default function Education() {
-    return (
-        <motion.div
-            initial={{opacity: 0, x:200, y: 0}}
-            animate={{opacity: 1, x:0, y: 0}}
-            transition={{duration: 0.8, ease: "easeOut", delay:1.4}}
-            className="w-full mx-auto max-w-sm md:max-w-2xl"
-        >
-            <Timeline items={educationItems} title="Education" />
-        </motion.div>
-    );
+    return <Timeline items={educationItems} title="Education" eyebrow="Background" />;
 }

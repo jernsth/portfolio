@@ -1,42 +1,52 @@
 "use client";
 
-// components/ExperienceEducation.tsx
 import { Timeline, TimelineItem } from "@/components/shared/Timeline";
-import {motion} from "framer-motion";
 
 const experienceItems: TimelineItem[] = [
     {
-        title: "Backend Developer – m3connect GmbH",
-        subtitle: "December 2025 – present",
-        description: "Building scalable web applications using React, Next.js and Node.js. Currently the lead developer of a WebUI project for a 5G-Core.",
-        date: "2024",
+        title: "Backend Developer",
+        org: "m3connect GmbH",
+        period: "Dec 2025 – Present",
+        description:
+            "Building and running the microservice landscape behind m3connect's connectivity platform, with Java and Spring Boot at its core.",
+        highlights: [
+            "Implement and extend services across a distributed Spring Boot architecture.",
+            "Own maintenance, debugging and support for those services once they are in production.",
+            "Work close to the infrastructure layer — containerised deployments and service-to-service communication.",
+        ],
+        tags: ["Java", "Spring Boot", "Microservices", "REST", "Docker"],
         type: "work",
+        current: true,
     },
     {
-        title: "Fullstack Developer – m3connect GmbH",
-        subtitle: "December 2024 – December 2025",
-        description: "Building scalable web applications using React, Next.js and Node.js. Currently the lead developer of a WebUI project for a 5G-Core.",
-        date: "2024",
+        title: "Fullstack Developer",
+        org: "m3connect GmbH",
+        period: "Dec 2024 – Dec 2025",
+        description:
+            "Delivered scalable web applications end to end — including an in-house 5G core and the web UI that operates it.",
+        highlights: [
+            "Built an in-house 5G core and a custom web UI to configure and control it.",
+            "Developed React and Next.js frontends against Node.js services.",
+            "Moved between frontend and backend depending on where the product needed the work.",
+        ],
+        tags: ["React", "Next.js", "TypeScript", "Node.js", "5G Core"],
         type: "work",
     },
     {
         title: "Network Specialist",
-        subtitle: "June 2020 – December 2024",
-        description: "Building scalable web applications using React, Next.js and Node.js. Currently the lead developer of a WebUI project for a 5G-Core.",
-        date: "2020",
+        period: "Jun 2020 – Dec 2024",
+        description:
+            "Kept large network and system environments running — the operational grounding that still shapes how I build backends today.",
+        highlights: [
+            "Maintained and supported large-scale networks and systems in daily operation.",
+            "Handled troubleshooting across the stack, from physical connectivity up to the services on top.",
+            "Developed the instinct for availability and failure modes that I now design for from the start.",
+        ],
+        tags: ["Networking", "Systems", "Troubleshooting", "Support"],
         type: "work",
     },
 ];
 
 export default function Experience() {
-    return (
-        <motion.div
-            initial={{opacity: 0, x:-200, y: 0}}
-            animate={{opacity: 1, x:0, y: 0}}
-            transition={{duration: 0.8, ease: "easeOut", delay:1.4}}
-            className="w-full mx-auto max-w-sm md:max-w-2xl"
-        >
-            <Timeline items={experienceItems} title="Experience" />
-        </motion.div>
-    );
+    return <Timeline items={experienceItems} title="Experience" eyebrow="Career" />;
 }

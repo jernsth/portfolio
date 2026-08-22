@@ -54,6 +54,8 @@ interface SkillsProps {
     items?: SkillItem[];
 }
 
+const LAYOUTS = ['Table', 'Sphere', 'Helix', 'Grid'] as const;
+
 // --- DATEN ---
 const skills: SkillItem[] = [
     { title: "React", logo: <SiReact size={24} /> },
@@ -74,7 +76,7 @@ const skills: SkillItem[] = [
     { title: "Python", logo: <SiPython size={24} /> },
     { title: "Java", logo: <FaJava size={24} /> },
     { title: "C/C++", logo: <SiC size={24} /> },
-    { title: "REST", logo: <span className="text-xs font-semibold px-2 py-1 rounded bg-gray-200 text-gray-700">API</span> },
+    { title: "REST", logo: <span className="rounded bg-secondary px-2 py-1 text-xs font-semibold text-secondary-foreground">API</span> },
     { title: "GraphQL", logo: <SiGraphql size={24} /> },
     { title: "Docker", logo: <SiDocker size={24} /> },
     { title: "Kubernetes", logo: <SiKubernetes size={24} /> },
@@ -149,7 +151,7 @@ const AnimatedItem = ({ item, targetPos, targetRot }: AnimatedItemProps) => {
         ref.current.position.lerp(targetPos, 6 * delta);
         targetQuat.setFromEuler(targetRot);
         ref.current.quaternion.slerp(targetQuat, 6 * delta);
-        
+
         // Sorgt für kontinuierliches Rendering, um Unschärfe zu vermeiden
         state.invalidate();
     });
@@ -157,33 +159,10 @@ const AnimatedItem = ({ item, targetPos, targetRot }: AnimatedItemProps) => {
     return (
         <group ref={ref} position={initialPos} rotation={initialRot}>
             <Html transform center>
-                <div style={{
-                    width: '160px',
-                    height: '160px',
-                    background: 'rgba(20, 20, 20, 0.9)',
-                    border: '1px solid #444',
-                    borderRadius: '12px',
-                    padding: '10px',
-                    color: 'white',
-                    fontFamily: 'sans-serif',
-                    boxShadow: '0 4px 15px rgba(0,0,0,0.5)',
-                    userSelect: 'none',
-                    display: 'flex',
-                    flexDirection: 'column',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    gap: '15px',
-                    transition: 'all 0.3s ease',
-                    cursor: 'pointer'
-                }}
-                className="hover:scale-105 hover:bg-zinc-800 hover:border-zinc-500"
-                >
-                    <div style={{ transform: 'scale(2.2)' }}>
-                        {item.logo}
-                    </div>
-                    <div style={{ fontSize: '18px', fontWeight: 'bold', textAlign: 'center' }}>
-                        {item.title}
-                    </div>
+                {/* Theme-aware: the card used to be hardcoded dark and was unreadable in light mode. */}
+                <div className="flex size-40 cursor-pointer select-none flex-col items-center justify-center gap-4 rounded-xl border border-border bg-card/85 text-card-foreground shadow-lg backdrop-blur-sm transition-all duration-300 hover:scale-105 hover:border-brand/50 hover:bg-accent">
+                    <div className="scale-[2.2] text-brand">{item.logo}</div>
+                    <div className="text-center text-lg font-semibold">{item.title}</div>
                 </div>
             </Html>
         </group>
@@ -195,70 +174,80 @@ export default function Skills({ items = skills }: SkillsProps) {
     const [isMounted, setIsMounted] = useState(false);
 
     useEffect(() => {
-        const timer = setTimeout(() => {
-            setIsMounted(true);
-        }, 1500); // 1.2 Sekunden Delay
-
-        return () => clearTimeout(timer); // Cleanup
+        // Delay so the canvas does not fight the hero animation for the main thread.
+        const timer = setTimeout(() => setIsMounted(true), 1200);
+        return () => clearTimeout(timer);
     }, []);
 
     const layouts = useMemo(() => calculateLayouts(items.length), [items.length]);
     const currentLayout = layouts[layoutIdx];
 
-    if (!isMounted) {
-        return <div style={{ width: '100%', height: '600px', background: 'transparent', borderRadius: '16px' }} />;
-    }
-
     return (
-        <div style={{ 
-            width: '100%', 
-            height: '600px', 
-            position: 'relative', 
-            borderRadius: '16px', 
-            background: 'transparent'
-        }}>
-
-            {/* UI Overlay mit höherem zIndex */}
-            <div style={{
-                position: 'absolute', zIndex: 5000, bottom: '20px', left: '50%', transform: 'translateX(-50%)',
-                display: 'flex', gap: '10px', flexWrap: 'wrap', justifyContent: 'center', width: '100%'
-            }}>
-                {['Table', 'Sphere', 'Helix', 'Grid'].map((name, idx) => (
-                    <button
-                        key={name}
-                        onClick={() => setLayoutIdx(idx)}
-                        style={{
-                            padding: '8px 16px', cursor: 'pointer', background: layoutIdx === idx ? '#fff' : 'rgba(51, 51, 51, 0.8)',
-                            color: layoutIdx === idx ? '#000' : '#fff', border: '1px solid #555', borderRadius: '20px',
-                            fontWeight: 'bold', transition: 'all 0.3s', fontSize: '14px', backdropFilter: 'blur(4px)',
-                            boxShadow: '0 2px 10px rgba(0,0,0,0.3)'
-                        }}
-                        className="hover:bg-gray-200 hover:text-black"
-                    >
-                        {name}
-                    </button>
-                ))}
+        <section className="w-full">
+            <div className="mx-auto mb-6 w-full max-w-3xl px-4 text-center">
+                <p className="mb-2 text-xs font-semibold uppercase tracking-[0.14em] text-brand">
+                    Toolbox
+                </p>
+                <h2 className="text-2xl font-semibold text-foreground sm:text-3xl">Tech Stack</h2>
+                <p className="mt-3 text-sm text-muted-foreground">
+                    The languages, frameworks and tools I work with. Drag to rotate, scroll to zoom,
+                    or switch the arrangement below.
+                </p>
             </div>
 
-            <Canvas camera={{ position: [0, 0, 35], fov: 50 }}>
-                <ambientLight intensity={0.4} />
-                <pointLight position={[10, 10, 10]} intensity={0.6} />
-                <OrbitControls 
-                    enableDamping 
-                    dampingFactor={0.05} 
-                    minDistance={25}
-                    maxDistance={60} 
-                />
+            <div className="relative h-[440px] w-full sm:h-[560px]">
+                {!isMounted ? (
+                    <div className="size-full" aria-hidden />
+                ) : (
+                    <>
+                        <Canvas camera={{ position: [0, 0, 35], fov: 50 }} dpr={[1, 2]}>
+                            <ambientLight intensity={0.4} />
+                            <pointLight position={[10, 10, 10]} intensity={0.6} />
+                            <OrbitControls
+                                enableDamping
+                                dampingFactor={0.05}
+                                minDistance={25}
+                                maxDistance={60}
+                            />
 
-                {items.map((item, i) => (
-                    <AnimatedItem
-                        key={i}
-                        item={item}
-                        targetPos={currentLayout[i].pos}
-                        targetRot={currentLayout[i].rot}
-                    />
-                ))}
-            </Canvas>
-        </div>
+                            {items.map((item, i) => (
+                                <AnimatedItem
+                                    key={item.title}
+                                    item={item}
+                                    targetPos={currentLayout[i].pos}
+                                    targetRot={currentLayout[i].rot}
+                                />
+                            ))}
+                        </Canvas>
+
+                        <div className="pointer-events-none absolute inset-x-0 bottom-4 z-10 flex justify-center">
+                            <div
+                                role="tablist"
+                                aria-label="Skill layout"
+                                className="pointer-events-auto flex gap-1 rounded-full border border-border bg-card/80 p-1 shadow-lg backdrop-blur-md"
+                            >
+                                {LAYOUTS.map((name, idx) => (
+                                    <button
+                                        key={name}
+                                        role="tab"
+                                        aria-selected={layoutIdx === idx}
+                                        onClick={() => setLayoutIdx(idx)}
+                                        className={[
+                                            "rounded-full px-4 py-1.5 text-sm font-medium transition-colors duration-200",
+                                            "focus-visible:outline-none focus-visible:ring-[3px] focus-visible:ring-ring/50",
+                                            layoutIdx === idx
+                                                ? "bg-brand text-brand-foreground shadow-sm"
+                                                : "text-muted-foreground hover:bg-accent hover:text-foreground",
+                                        ].join(" ")}
+                                    >
+                                        {name}
+                                    </button>
+                                ))}
+                            </div>
+                        </div>
+                    </>
+                )}
+            </div>
+        </section>
     );
 }
