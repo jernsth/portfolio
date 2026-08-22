@@ -19,7 +19,7 @@ const experienceItems: TimelineItem[] = [
         current: true,
     },
     {
-        title: "Fullstack Developer",
+        title: "Fullstack Developer - Working Student",
         org: "m3connect GmbH",
         period: "Dec 2024 – Dec 2025",
         description:
@@ -33,7 +33,8 @@ const experienceItems: TimelineItem[] = [
         type: "work",
     },
     {
-        title: "Network Specialist",
+        title: "Network Specialist - Working Student",
+        org: "m3connect GmbH",
         period: "Jun 2020 – Dec 2024",
         description:
             "Kept large network and system environments running — the operational grounding that still shapes how I build backends today.",
